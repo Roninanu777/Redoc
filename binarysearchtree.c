@@ -189,8 +189,6 @@ int totalexternalnodes(struct node *tree)
 struct node *deleteelement(struct node *tree,int num)
 {
         struct node *TEMP;
-        printf("\nEnter the element to delete: ");
-        scanf("%d",&num);
         if(tree==NULL)
         {
                 printf("\nThe element is not in tree");
@@ -225,7 +223,6 @@ struct node *deleteelement(struct node *tree,int num)
                         tree=tree->RIGHT;
                 }
         }
-        preorderTraversal(tree);
 }
 int main()
 {
@@ -281,9 +278,11 @@ int main()
                                 break;
                         case 11:printf("\nThe height of the tree is %d",height(tree));
                                 break;
-                        case 12:tree=deleteelement(tree,num);
-                                printf("\nThe element deleted is %d",tree->DATA);
-                                break;
+			case 12:printf("Enter the number you want to delete: ");
+				scanf("%d",&num);
+				tree=deleteelement(tree,num);
+				inorderTraversal(tree);
+				break;
 	        }  
         }
 	while(option!=13);
